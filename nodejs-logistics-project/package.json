@@ -1,0 +1,28 @@
+{
+  "name": "nodejs-logistics-project",
+  "version": "1.0.0",
+  "description": "api for search logistics",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christian75876/nodejs-logistics-project.git"
+  },
+  "author": "Christian Camilo Pabon Villanueva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christian75876/nodejs-logistics-project/issues"
+  },
+  "homepage": "https://github.com/christian75876/nodejs-logistics-project#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
