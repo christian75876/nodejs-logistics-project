@@ -35,7 +35,14 @@ router.post('/', async (req, res) => {
         name: req.body.name,
         location: req.body.location,       
     }
+    
+    const response = {
+        message: "Warenhouse created successfully",
+        warehouse: newData
+    };
     data.push(newData);
+    res.status(201).json(response);
+
     await writeFile(data);
     res.status(201).json(newData).message('warenhouse created sucessfully');
 });
@@ -43,7 +50,12 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const data = await readFile();
-        res.json(data);
+        
+        const response = {
+            warehouse: data
+        };
+
+        res.json(response);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -54,7 +66,12 @@ router.get('/:id', async (req, res) => {
         const data = await readFile();
         const warehouse = data.findIndex(warehouse => warehouse.id === parseInt(req.params.id));
         if(warehouse === -1)console.log('warehouse not found');
-        res.json(data[warehouse]);
+
+        const response = {
+            warehouse: data[warehouse]
+        }
+
+        res.json(response);
     } catch (error) {
         throw new Error(`not found this id`)
     }
@@ -77,10 +94,16 @@ router.delete('/:id', async (req, res) => {
     try {
         const data = await readFile();
         const warehouse = data.findIndex(warehouse => warehouse.id === parseInt(req.params.id));
-        if(warehouse === -1) throw new Error('warehouse not found');
+        console.log(warehouse);
+        if(warehouse === -1) return console.log('warehouse not found');
         data.splice(warehouse, 1);
         await writeFile(data);
-        res.status(204).send();
+
+        const response = {
+            message: 'warehouse deleted successfully'
+        }
+
+        res.json(response);
     } catch (error) {
         throw new Error(`not found this id`)
     }

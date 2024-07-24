@@ -12,8 +12,8 @@ dotenv.config();
 const PORT = process.env.PORT || 3010;
 
 app.use(express.json());
-app.use('/warenhouses', router);
-app.use('/shipment', routerShipment);
+app.use('/warehouses', router);
+app.use('/shipments', routerShipment);
 app.use(errorHandler);
 
 

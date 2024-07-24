@@ -48,7 +48,12 @@ routerShipment.post('/', async (req, res) => {
         };
         data.push(newData);
         await writeFile(data);
-        res.status(200)
+
+        // const response = {
+            // shipments: newData
+        // }
+
+        res.status(200);
     } catch (error) {
         res.status(500).sendStatus(error.message);
     }
